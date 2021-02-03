@@ -24,19 +24,15 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "target"
     - "dbt_modules"
 
-on-run-start:
-  - "alter warehouse transforming set warehouse_size=small;"
 
-on-run-end:
-  - "alter warehouse transforming set warehouse_size=xsmall;"
-  - "{{ grant_all_on_schemas(schemas, 'transformer') }}"
-
-    
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
+# In this example config, we tell dbt to build all models in the example/ directory
+# as tables. These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro.
 models:
-  
   tpch:
-    staging:
-      +materialized: view
+    # Applies to all files under models/example/
+    example:
+      materialized: view
