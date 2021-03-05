@@ -1,9 +1,10 @@
 version: 2
 
 sources:
-  - name: tpch_sf001
+  - name: tpch
     description: copy of a postgres application database
     database: raw
+    schema: tpch_sf001
     tables:
       - name: customer
         description: raw customer data
