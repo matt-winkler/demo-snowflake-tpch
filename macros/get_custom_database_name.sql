@@ -2,7 +2,8 @@
     
     {%- set default_database = target.database -%}
     
-    {%- if custom_database_name is not none and target.name == 'prod' -%}
+    {%- if custom_database_name is not none and target.name != 'dev' -%}
+        
         {{ target.name.upper() }}_{{ custom_database_name | trim }}        
     
     {%- else -%}
