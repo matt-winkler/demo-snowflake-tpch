@@ -36,3 +36,11 @@ models:
     # Applies to all files under models/example/
     example:
       materialized: view
+    
+    sharing:
+      pre-hook: 
+        - "{{ create_share('example_data_share', ['gk88901.us-central1.gcp']) }}"
+
+seeds: 
+  tpch:
+    +enabled:true
