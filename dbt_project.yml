@@ -39,6 +39,7 @@ models:
     
     sharing:
       pre-hook: 
+        - "use role accountadmin;"
         - "{{ create_share('example_data_share', ['gk88901.us-central1.gcp']) }}"
 
 seeds: 
