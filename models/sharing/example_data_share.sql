@@ -2,6 +2,7 @@
     config(
         materialized='view',
         secure=true,
+        pre_hook='use role accountadmin;',
         post_hook="{{ share_view ('sharing', 'shared_fct_orders_view', 'example_data_share') }}"
         ) 
 }}
