@@ -2,7 +2,7 @@
     config(
         materialized='view',
         secure=true,
-        post_hook="{{ share_view ('sharing', 'shared_fct_orders_view', 'example_data_share') }}"
+        post_hook="{{ share_view ('dbt_mwinkler_private_demo', 'shared_fct_orders_view', 'example_data_share') }}"
         ) 
 }}
 
