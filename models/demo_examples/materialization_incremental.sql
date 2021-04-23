@@ -1,31 +1,19 @@
-{{ config(materialized='incremental') }}
+{{ 
+    config(materialized='incremental_custom',
+           incremental_strategy='merge',
+           unique_key='customer_key',
+           should_full_refresh=False,
+           on_schema_change='sync') 
+}}
 
-with source as (
-
-    select * from {{ source('tpch', 'customer') }}
-
-),
-
-renamed as (
-
-    select
-        c_custkey as customer_key,
-        c_name as name,
-        c_address as address, 
-        c_nationkey as nation_key,
-        c_phone as phone,
-        c_acctbal as account_balance,
-        c_mktsegment as market_segment,
-        c_comment as comment
-
-    from source
-
+with customers as (
+    SELECT * from {{ ref('stg_tpch_customers') }}
 )
 
-select * from renamed
+select * from customers
 
 {% if is_incremental() %}
   -- this filter will only be applied on an incremental run
-  where customer_key not in (select customer_key from {{this}})
+  where customer_key not in (select customer_key from {{ this }} )
 
 {% endif %}
