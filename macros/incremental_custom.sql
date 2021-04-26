@@ -115,7 +115,7 @@
   
 {% endmacro %}
 
-{% materialization incremental_custom, adapter='snowflake' -%}
+{%- materialization incremental_custom, adapter='snowflake' -%}
 
   {% set original_query_tag = set_query_tag() %}
 
