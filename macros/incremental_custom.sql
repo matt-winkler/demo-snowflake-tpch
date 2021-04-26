@@ -50,8 +50,9 @@
   {% set source_names = get_column_names(source_columns) %}
   {% set target_names = get_column_names(target_columns) %}
    
-   {%- for col in source_names -%} 
-     {%- if col not in target_names -%}
+   {# check whether the name attribute exists in the target, but dont worry about data type differences #}
+   {%- for col in source_columns -%} 
+     {%- if col.name not in target_names -%}
       {{ result.append(col) }}
       {%- endif -%}
    {%- endfor -%}
@@ -73,7 +74,7 @@
     {% set schema_changed = True %}
   {% endif %}
 
-  {{return(schema_changed)}}
+  {{ return(schema_changed) }}
 
 {% endmacro %}
 
