@@ -37,6 +37,10 @@ models:
     example:
       materialized: view
     
+    marts:
+      core:
+        schema: core_mart
+
     sharing:
       pre-hook: 
         - "use role accountadmin;"
