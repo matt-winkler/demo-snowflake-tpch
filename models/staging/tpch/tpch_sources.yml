@@ -8,7 +8,7 @@ sources:
       - name: customer
         columns:
           - name: c_custkey
-            description: unique customer key
+            description: "unique customer key with var {{ var('input', 'default') }}"
             tests:
               - unique:
                   severity: warn
