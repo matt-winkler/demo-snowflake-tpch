@@ -7,7 +7,12 @@
     Try changing "table" to "view" below
 */
 
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        sql_header=get_sql_query_tags()
+        ) 
+}}
 
 with source_data as (
 

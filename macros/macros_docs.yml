@@ -1,0 +1,5 @@
+version: 2
+
+macros:
+  - name: grant_all_on_schemas
+    description: custom implementation of incremental model
