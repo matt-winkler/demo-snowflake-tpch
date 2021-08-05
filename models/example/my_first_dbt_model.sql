@@ -9,8 +9,7 @@
 
 {{ 
     config(
-        materialized='table',
-        sql_header=get_sql_query_tags()
+        materialized='table'
         ) 
 }}
 
