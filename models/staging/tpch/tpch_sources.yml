@@ -16,6 +16,8 @@ sources:
                   severity: warn
           - name: c_name
           - name: c_address
+            meta:
+              masking_policy: temp
           - name: c_nationkey
           - name: c_phone
           - name: c_acctbal

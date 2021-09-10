@@ -33,6 +33,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   tpch:
+    #pre-hook:
+    #  "{{ logging.log_model_start_event() }}"
     # Applies to all files under models/example/
     example:
       materialized: view
@@ -45,6 +47,10 @@ models:
       pre-hook: 
         - "use role accountadmin;"
         - "{{ create_share('example_data_share', ['DMA97769']) }}"
+
+snapshots:
+  tpch:
+    +schema: test
 
 seeds: 
   tpch:
