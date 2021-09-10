@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='table',
+        cluster_by=['order_date']
+    )
+}}
+
 with source as (
 
     select * from {{ source('tpch', 'orders') }}

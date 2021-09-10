@@ -1,4 +1,4 @@
 
 packages:
-  - package: dbt-labs/logging
-    version: 0.4.1
+  - package: calogica/dbt_expectations
+    version: 0.3.1

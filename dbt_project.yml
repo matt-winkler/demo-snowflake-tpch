@@ -48,6 +48,10 @@ models:
         - "use role accountadmin;"
         - "{{ create_share('example_data_share', ['DMA97769']) }}"
 
+snapshots:
+  tpch:
+    +schema: test
+
 seeds: 
   tpch:
     +enabled:true

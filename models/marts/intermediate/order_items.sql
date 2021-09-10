@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='table',
+        cluster_by=['order_date']
+    )
+}}
+
 with orders as (
     
     select * from {{ ref('stg_tpch_orders') }}
